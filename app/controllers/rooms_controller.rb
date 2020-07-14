@@ -16,6 +16,13 @@ class RoomsController < ApplicationController
     end
     
   end
+  
+  def destroy
+    room = Room.find(params[:id])
+    room.destroy
+
+    redirect_to rooms_path notice: "Se eliminó con éxito"
+  end
 
   def new
     @room = Room.new

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-6">
-      <h1><%= @room.new_record? ? "Publicar": "Editar" %> Habitación</h1>
+      <h1><%= @room.new_record? ? "Publicar" : "Editar" %> Habitación</h1>
 
       <%= form_for @room do |f| %>
         <div class="form-group">
@@ -23,6 +23,11 @@
         </div>
 
         <div class="form-group">
+          <%= f.label :price_per_night, "Valor Noche" %>
+          <%= f.text_field :price_per_night, class: 'form-control input-lg col-sm-3' %>
+        </div>
+
+        <div class="form-group">
           <%= f.text_field :image_url, class: 'form-control input-lg', placeholder: "URL de Imagen" %>
         </div>
 
@@ -32,4 +37,16 @@
       <% end %>
     </div>
   </div>
+  <!-- Show errors if submit form has -->
+  <% if @errors %>
+    <div class="row justify-content-center mt-3">
+      <div class="col-sm-6">
+        <% @errors.each do | error | %>
+          <div class="alert alert-danger" role="alert">
+            <%= error%>
+          </div>
+        <% end %>  
+      </div>
+    </div>
+   <% end %>
 </div>

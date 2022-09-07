@@ -1,6 +1,16 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-6">
+
+      <%if @errors %>
+      <ul>
+        <% @errors.each do |error|%>
+          <li><%= error  %></li>
+          <%end %>
+      </ul>
+      <%end %>
+
+
       <h1><%= @room.new_record? ? "Publicar": "Editar" %> Habitación</h1>
 
       <%= form_for @room do |f| %>
